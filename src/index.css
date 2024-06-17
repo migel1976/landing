@@ -1,4 +1,20 @@
-:root {
+*{
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "Roboto", sans-serif;
+  background: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +81,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

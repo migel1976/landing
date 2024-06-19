@@ -1,6 +1,6 @@
-import './App.css'
-import styled from 'styled-components';
-
+import "./App.css";
+import styled from "styled-components";
+import Banner from "./components/Banner";
 
 const Title = styled.h1`
   font-size: 1.5em;
@@ -8,14 +8,12 @@ const Title = styled.h1`
 `;
 
 function App() {
-
   return (
     <>
-      <Title>
-        Тестовый проект
-      </Title>
+      <Title>Тестовый проект</Title>
+      <Banner />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

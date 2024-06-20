@@ -1,37 +1,33 @@
 import styled from "styled-components";
-import rightBanner from "../assets/right-banner.png";
-
-const divStyleUpper = {
-  marginRight: "100px",
-  maxWidth: "600px",
-};
-
-const divStyleBottom = {
-  paddingBottom: "80px",
-};
-
-const Main = styled.div`
-  background: #f2f4f8;
-`;
+import rightBanner from "../assets/right-banner.webp";
 
 const Container = styled.div`
+  height: 680px;
   background: #f2f4f8;
-  maxheight: 208px;
-
   display: flex;
-  max-width: 1280px;
-  margin: 0 auto;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 80px;
+`;
+
+const LeftBlock = styled.div`
+  padding-top: 80px;
+  height: 520px;
+  width: 600px;
+`;
+
+const RightBlock = styled.div`
+  height: 505px;
+  width: 600px;
 `;
 
 const HeadText = styled.div`
+  padding-bottom: 48px;
   font-size: 54px;
   font-weight: 700;
 `;
 const SubText = styled.div`
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-bottom: 64px;
   font-size: 18px;
   font-weight: 200;
 `;
@@ -40,7 +36,7 @@ const Button = styled.button`
   padding: 16px 18px;
   border: 2px solid #458ff6;
   background: ${(props) => (props.primary ? "#458ff6" : "")};
-  color: ${(props) => (props.primary ? "White" : "#458ff6")};
+  color: ${(props) => (props.primary ? "#fff" : "#458ff6")};
   margin-right: 16px;
 
   font-size: 20px;
@@ -56,24 +52,25 @@ const Image = styled.div`
 
 export default function Banner() {
   return (
-    <Main>
-      <Container>
-        <div style={divStyleUpper}>
-          <HeadText>ДОКАЗАТЕЛЬНАЯ МЕДИЦИНА ДЛЯ ВСЕХ</HeadText>
-          <SubText>
-            Мы еще очень молоды, но достаточно амбициозны и планируем каждого
-            случайного гостя нашего сайта превратить в его постоянного
-            пользователя.
-          </SubText>
-          <Button primary="true" onClick={() => alert("Войти как врач")}>
-            Войти как врач
-          </Button>
-          <Button onClick={() => alert("Подробнее")}>Подробнее </Button>
-        </div>
-        <div style={divStyleBottom}>
-          <Image></Image>
-        </div>
-      </Container>
-    </Main>
+    <Container>
+      <LeftBlock>
+        <HeadText>ДОКАЗАТЕЛЬНАЯ МЕДИЦИНА ДЛЯ ВСЕХ</HeadText>
+        <SubText>
+          Мы еще очень молоды, но достаточно амбициозны и планируем каждого
+          случайного гостя нашего сайта превратить в его постоянного
+          пользователя.
+        </SubText>
+        <Button
+          primary={true.toString()}
+          onClick={() => alert("Войти как врач")}
+        >
+          Войти как врач
+        </Button>
+        <Button onClick={() => alert("Подробнее")}>Подробнее </Button>
+      </LeftBlock>
+      <RightBlock>
+        <Image />
+      </RightBlock>
+    </Container>
   );
 }

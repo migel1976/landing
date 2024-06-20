@@ -35,8 +35,8 @@ const SubText = styled.div`
 const Button = styled.button`
   padding: 16px 18px;
   border: 2px solid #458ff6;
-  background: ${(props) => (props.primary ? "#458ff6" : "")};
-  color: ${(props) => (props.primary ? "#fff" : "#458ff6")};
+  background: ${({ primary }) => (primary ? "#458ff6" : "")};
+  color: ${({ primary }) => (primary ? "#fff" : "#458ff6")};
   margin-right: 16px;
 
   font-size: 20px;
@@ -60,10 +60,7 @@ export default function Banner() {
           случайного гостя нашего сайта превратить в его постоянного
           пользователя.
         </SubText>
-        <Button
-          primary={true.toString()}
-          onClick={() => alert("Войти как врач")}
-        >
+        <Button primary={+true} onClick={() => alert("Войти как врач")}>
           Войти как врач
         </Button>
         <Button onClick={() => alert("Подробнее")}>Подробнее </Button>

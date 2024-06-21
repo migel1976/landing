@@ -2,7 +2,6 @@ import styled from "styled-components";
 import rightBanner from "../assets/right-banner.webp";
 
 const Container = styled.div`
-  height: 680px;
   background: #f2f4f8;
   display: flex;
   align-items: center;
@@ -30,13 +29,17 @@ const Paragraph = styled.p`
 const Button = styled.button`
   padding: 16px 18px;
   border: 2px solid #458ff6;
-  background: ${({ primary }) => (primary ? "#458ff6" : "transparent")};
+  background: ${({ primary }) => primary && "#458ff6"};
   color: ${({ primary }) => (primary ? "#fff" : "#458ff6")};
   margin-right: 16px;
 
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+`;
+
+const ImageSection = styled.section`
+  padding: 80px 0 80px 0;
 `;
 
 const Image = styled.div`
@@ -60,7 +63,9 @@ export default function Banner() {
         </Button>
         <Button onClick={() => alert("Подробнее")}>Подробнее</Button>
       </TextSection>
-      <Image />
+      <ImageSection>
+        <Image />
+      </ImageSection>
     </Container>
   );
 }

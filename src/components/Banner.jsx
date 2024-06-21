@@ -29,17 +29,18 @@ const Paragraph = styled.p`
 const Button = styled.button`
   padding: 16px 18px;
   border: 2px solid #458ff6;
-  background: ${({ primary }) => primary && "#458ff6"};
-  color: ${({ primary }) => (primary ? "#fff" : "#458ff6")};
   margin-right: 16px;
-
   font-size: 20px;
   font-weight: 500;
   cursor: pointer;
+  &:hover {
+    background-color: #458ff6;
+    color: #fff;
+  }
 `;
 
 const ImageSection = styled.section`
-  padding: 80px 0 80px 0;
+  padding-block: 80px;
 `;
 
 const Image = styled.div`
@@ -58,9 +59,7 @@ export default function Banner() {
           случайного гостя нашего сайта превратить в его постоянного
           пользователя.
         </Paragraph>
-        <Button primary={+true} onClick={() => alert("Войти как врач")}>
-          Войти как врач
-        </Button>
+        <Button onClick={() => alert("Войти как врач")}>Войти как врач</Button>
         <Button onClick={() => alert("Подробнее")}>Подробнее</Button>
       </TextSection>
       <ImageSection>

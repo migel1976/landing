@@ -77,8 +77,8 @@ function SearchSelect() {
   return (
     <SearchSelectWrap>
       <StyledSearchSelect>
-        {searchCategories.map((category, i) => (
-          <SearchCategory value={category.value} key={i}>
+        {searchCategories.map((category) => (
+          <SearchCategory value={category.value} key={category.value}>
             {category.name}
           </SearchCategory>
         ))}

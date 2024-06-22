@@ -17,8 +17,7 @@ const OuterContainer = styled.div`
   display: flex;
   justify-content: space-between;
 
-  padding-block: ${({ theme }) => theme.spacing.x1};
-  padding-inline: ${({ theme }) => theme.spacing.x10};
+  padding: 8px 80px;
 
   max-width: 1440px;
 
@@ -39,14 +38,21 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
   display: flex;
   align-items: center;
+
+  transition: background-color 300ms ease-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary30};
+  }
 `;
 
 const NavLink = styled.a`
   padding: 8px 16px;
   color: inherit;
 
-  &:focus {
-    outline: 3px solid ${({ theme }) => theme.color.primary60};
+  &:focus-visible {
+    background-color: ${({ theme }) => theme.color.white};
+    outline: 2px solid ${({ theme }) => theme.color.primary60};
   }
 `;
 
@@ -62,8 +68,14 @@ const NavMenuButton = styled.button`
 
   cursor: pointer;
 
-  &:focus {
-    outline: 3px solid ${({ theme }) => theme.color.primary60};
+  transition: background-color 300ms ease-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary30};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.color.primary60};
   }
 `;
 
@@ -76,9 +88,9 @@ function NavMenu() {
             <img src={menuIcon} />
             <span>Меню</span>
           </NavMenuButton>
-          {menuItems.map((item, i) => {
+          {menuItems.map((item) => {
             return (
-              <NavListItem key={i}>
+              <NavListItem key={item.href}>
                 <NavLink href={item.href} tabIndex="1">
                   {item.name}
                 </NavLink>

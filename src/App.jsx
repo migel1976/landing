@@ -1,21 +1,14 @@
-import './App.css'
-import styled from 'styled-components';
-
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-`;
+import "./App.css";
+import NavMenu from "./components/header/NavMenu";
+import TopHeader from "./components/header/TopHeader";
 
 function App() {
-
   return (
     <>
-      <Title>
-        Тестовый проект
-      </Title>
+      <TopHeader />
+      <NavMenu />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

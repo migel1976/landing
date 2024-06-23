@@ -8,10 +8,19 @@ const OuterContainer = styled.div`
   gap: 24px;
   justify-content: space-between;
 
+  margin: 0 auto;
   padding-block: ${({ theme }) => theme.spacing.x3};
   padding-inline: ${({ theme }) => theme.spacing.x10};
 
   max-width: 1440px;
+`;
+
+const Logo = styled.img`
+  display: block;
+
+  @media (max-width: 980px) {
+    display: none;
+  }
 `;
 
 const Search = styled.div`
@@ -77,7 +86,7 @@ const Button = styled.button`
 function SearchBar() {
   return (
     <OuterContainer>
-      <img src={logo} />
+      <Logo src={logo} />
       <Search>
         <SearchInputWrap>
           <SearchIcon src={searchIcon} />

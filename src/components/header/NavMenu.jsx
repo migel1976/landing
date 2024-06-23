@@ -15,16 +15,19 @@ const menuItems = [
 
 const OuterContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-
-  padding: 8px 80px;
-
-  max-width: 1440px;
+  justify-content: center;
 
   background-color: ${({ theme }) => theme.color.coolGray10};
 
   font: ${({ theme }) => theme.typography.menu};
   color: ${({ theme }) => theme.color.coolGray90};
+`;
+
+const NavMenuWrap = styled.div`
+  padding: 8px 80px;
+
+  width: 100%;
+  max-width: 1440px;
 `;
 
 const StyledNavMenu = styled.nav``;
@@ -38,17 +41,21 @@ const NavList = styled.ul`
 const NavListItem = styled.li`
   display: flex;
   align-items: center;
+`;
+
+const NavLink = styled.a`
+  padding: 8px 16px;
+  color: inherit;
 
   transition: background-color 300ms ease-out;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.primary30};
   }
-`;
 
-const NavLink = styled.a`
-  padding: 8px 16px;
-  color: inherit;
+  &:active {
+    background-color: ${({ theme }) => theme.color.primary60};
+  }
 
   &:focus-visible {
     background-color: ${({ theme }) => theme.color.white};
@@ -82,23 +89,25 @@ const NavMenuButton = styled.button`
 function NavMenu() {
   return (
     <OuterContainer>
-      <StyledNavMenu>
-        <NavList>
-          <NavMenuButton tabIndex="1">
-            <img src={menuIcon} />
-            <span>Меню</span>
-          </NavMenuButton>
-          {menuItems.map((item) => {
-            return (
-              <NavListItem key={item.href}>
-                <NavLink href={item.href} tabIndex="1">
-                  {item.name}
-                </NavLink>
-              </NavListItem>
-            );
-          })}
-        </NavList>
-      </StyledNavMenu>
+      <NavMenuWrap>
+        <StyledNavMenu>
+          <NavList>
+            <NavMenuButton tabIndex="1">
+              <img src={menuIcon} />
+              <span>Меню</span>
+            </NavMenuButton>
+            {menuItems.map((item) => {
+              return (
+                <NavListItem key={item.href}>
+                  <NavLink href={item.href} tabIndex="1">
+                    {item.name}
+                  </NavLink>
+                </NavListItem>
+              );
+            })}
+          </NavList>
+        </StyledNavMenu>
+      </NavMenuWrap>
     </OuterContainer>
   );
 }

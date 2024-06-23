@@ -14,6 +14,7 @@ const searchCategories = [
 
 const SearchSelectWrap = styled.div`
   position: relative;
+  flex-shrink: 1;
 
   svg {
     position: absolute;
@@ -34,6 +35,7 @@ const StyledSearchSelect = styled.select`
   position: relative;
 
   padding: 12px 16px;
+  width: fit-content;
   height: 100%;
 
   border: none;

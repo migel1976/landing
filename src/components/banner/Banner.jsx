@@ -76,7 +76,7 @@ const resetActive=()=>{
         >Войти как врач</Button>
         <Button 
         onMouseEnter={resetActive}
-        >Войти как врач</Button>
+        >Подробнее</Button>
       </TextSection>
       <ImageSection>
         <Image />

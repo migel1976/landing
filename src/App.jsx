@@ -1,6 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
-import Banner from "./components/Banner";
+import Banner from "./components/banner/Banner";
 
 const Title = styled.h1`
   font-size: 1.5em;

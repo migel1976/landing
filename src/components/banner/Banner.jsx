@@ -1,12 +1,14 @@
 import styled from "styled-components";
-import rightBanner from "../assets/right-banner.webp";
+import rightBanner from "../../assets/right-banner.webp";
+import { useState } from "react";
+
 
 const Container = styled.div`
-  background: #f2f4f8;
+  background-color: ${({ theme }) => theme.color.coolGray10};
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 80px;
+  gap: ${({ theme }) => theme.spacing.x10};
 `;
 
 const TextSection = styled.section`
@@ -22,25 +24,28 @@ const HeadArticle = styled.article`
 
 const Paragraph = styled.p`
   padding-bottom: 64px;
-  font-size: 18px;
-  font-weight: 400;
+  font: ${({ theme }) => theme.typography.buttonL};
 `;
+
+
 
 const Button = styled.button`
   padding: 16px 18px;
   border: 2px solid #458ff6;
   margin-right: 16px;
-  font-size: 20px;
-  font-weight: 500;
+  font: ${({ theme }) => theme.typography.buttonL};
   cursor: pointer;
+  background: ${({ variant }) => variant==='active' && "#458ff6"};
+  color: ${({ variant, theme }) => variant === 'active' ? theme.color.white : "#458ff6"};
+
   &:hover {
     background-color: #458ff6;
-    color: #fff;
+    color: ${({ theme }) => theme.color.white};
   }
 `;
 
 const ImageSection = styled.section`
-  padding-block: 80px;
+  padding-block: ${({ theme }) => theme.spacing.x10};
 `;
 
 const Image = styled.div`
@@ -50,6 +55,12 @@ const Image = styled.div`
 `;
 
 export default function Banner() {
+const [val, setVal]=useState('active')
+
+const resetActive=()=>{
+  setVal(null)
+}
+
   return (
     <Container>
       <TextSection>
@@ -59,8 +70,13 @@ export default function Banner() {
           случайного гостя нашего сайта превратить в его постоянного
           пользователя.
         </Paragraph>
-        <Button onClick={() => alert("Войти как врач")}>Войти как врач</Button>
-        <Button onClick={() => alert("Подробнее")}>Подробнее</Button>
+        <Button 
+        variant={val}
+        onMouseEnter={resetActive}
+        >Войти как врач</Button>
+        <Button 
+        onMouseEnter={resetActive}
+        >Войти как врач</Button>
       </TextSection>
       <ImageSection>
         <Image />

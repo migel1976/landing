@@ -2,6 +2,7 @@ import "./App.css";
 import NavMenu from "./components/header/NavMenu";
 import SearchBar from "./components/header/SearchBar";
 import TopHeader from "./components/header/TopHeader";
+import Form from './components/form/Form'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <TopHeader />
       <SearchBar />
       <NavMenu />
+      <Form />
     </>
   );
 }

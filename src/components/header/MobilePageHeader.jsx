@@ -51,7 +51,6 @@ function MobilePageHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    console.log("clicked");
     setIsOpen(!isOpen);
   };
 

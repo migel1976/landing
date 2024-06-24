@@ -17,7 +17,7 @@ const OuterContainer = styled.div`
   font: ${({ theme }) => theme.typography.menu};
   color: ${({ theme }) => theme.color.coolGray90};
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: flex;
     justify-content: center;
 
@@ -26,7 +26,7 @@ const OuterContainer = styled.div`
 `;
 
 const NavMenuWrap = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     padding: 8px 80px;
 
     width: 100%;
@@ -40,7 +40,7 @@ const NavList = styled.ul`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     gap: ${({ theme }) => theme.spacing.x1};
     flex-direction: row;
     flex-wrap: wrap;
@@ -73,7 +73,7 @@ const NavLink = styled.a`
     outline: 2px solid ${({ theme }) => theme.color.primary60};
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     padding: 8px 16px;
   }
 `;
@@ -81,7 +81,7 @@ const NavLink = styled.a`
 const NavMenuButton = styled.button`
   display: none;
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: flex;
     align-items: center;
     gap: 8px;

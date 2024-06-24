@@ -16,7 +16,7 @@ const Search = styled.div`
     outline: 3px solid ${({ theme }) => theme.color.primary60};
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     flex-grow: 1;
 
     border: 1px solid ${({ theme }) => theme.color.coolGray30};

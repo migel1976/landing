@@ -3,24 +3,22 @@ import MobilePageHeader from "./MobilePageHeader";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const screenSize = "(min-width: 768px)";
+const breakpoint = 768;
 
 function PageHeader() {
-  const [matches, setMatches] = useState(window.matchMedia(screenSize));
-
-  const onChange = (e) => setMatches(e.matches);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    window.matchMedia(screenSize).addEventListener("change", onChange);
-    return () =>
-      window.matchMedia(screenSize).removeEventListener("change", onChange);
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
-    <>
-      {matches && <DesktopPageHeader />}
-      {!matches && <MobilePageHeader />}
-    </>
+    <>{width > breakpoint ? <DesktopPageHeader /> : <MobilePageHeader />}</>
   );
 }
 

@@ -8,7 +8,7 @@ align-items:center;
 column-gap: 8px;
 padding: 28px 20px 38px 0;
 @media ${({theme}) => theme.media.tablet} {
-    padding: 28px 0 38px;
+    padding-right: 0;
 }
 `
 
@@ -35,7 +35,6 @@ column-gap:16px;
 const BlockContact = styled.div`
 display:flex;
 flex-direction:column;
-width: 284px;
 @media ${({theme}) => theme.media.desktop} {
     margin-top:48px;
 }
@@ -60,20 +59,20 @@ const FooterContacts = () => {
             </ShopWrapper>
             <SocialTitle>Присоединиться к нам</SocialTitle>
             <SocialWrapper>
-                <SocialLink href="/">
-                    <img src="src\assets\youtube.svg" alt="" />
+                <SocialLink href="#">
+                    <img src="src\assets\youtube.svg" alt="Youtube" />
                 </SocialLink>
-                <SocialLink href="/">
-                    <img src="src\assets\facebook.svg" alt="" />
+                <SocialLink href="#">
+                    <img src="src\assets\facebook.svg" alt="Facebook" />
                 </SocialLink>
-                <SocialLink href="/">
-                    <img src="src\assets\twitter.svg" alt="" />
+                <SocialLink href="#">
+                    <img src="src\assets\twitter.svg" alt="Twitter" />
                 </SocialLink>
-                <SocialLink href="/">
-                    <img src="src\assets\instagram.svg" alt="" />
+                <SocialLink href="#">
+                    <img src="src\assets\instagram.svg" alt="Instagram" />
                 </SocialLink>
-                <SocialLink href="/">
-                    <img src="src\assets\linkedin.svg" alt="" />
+                <SocialLink href="#">
+                    <img src="src\assets\linkedin.svg" alt="Linkedin" />
                 </SocialLink>            
             </SocialWrapper>
         </BlockContact>

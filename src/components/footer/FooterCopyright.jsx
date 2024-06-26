@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CopyrightList, CopyrightListItem, ItemLink } from "./FooterMenuList";
+import {List, ListItem, ItemLink } from "./FooterMenuList";
 
 const listItems = [{name:'Медицина', link:'/'}, {name:'Наука', link:'/'}, {name:'Инновации', link:'/'}]
 
@@ -12,8 +12,18 @@ margin:48px 0 40px;
 @media ${({theme}) => theme.media.tablet} {
     flex-direction:column;
     row-gap:36px;
-    margin:48px 0 0;
+    margin-bottom:0;
 }
+`
+
+const CopyrightList = styled(List)`
+margin-top: 0;
+display:flex;
+gap:24px;
+`
+
+const CopyrightListItem = styled(ListItem)`
+margin-bottom: 0;
 `
 
 const CopyrightText = styled.p`

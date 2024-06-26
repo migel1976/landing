@@ -60,7 +60,7 @@ const InputForm = styled.input`
 
 const ButtonForm = styled.button`
     padding: 16px 28px;
-    font: ${({theme}) => theme.typography.buttonM}
+    font: ${({theme}) => theme.typography.buttonM};
     letter-spacing:0.5px;
     color:${({theme}) => theme.color.white};
     background:#458FF6;
@@ -83,7 +83,7 @@ const FooterSubscriber = () => {
         <Subscribe>
             <FooterLogo/>
             <Form>
-                <InputForm placeholder="Подписаться на рассылку"/>
+                <InputForm type="email" placeholder="Подписаться на рассылку"/>
                 <ButtonForm>Подписаться</ButtonForm>
             </Form>
         </Subscribe>

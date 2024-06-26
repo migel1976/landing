@@ -17,7 +17,6 @@ export const theme = {
     buttonM:   '500 16px/100% "Roboto", sans-serif',
     buttonS:   '500 14px/100% "Roboto", sans-serif',
     menu:      '500 16px/100% "Roboto", sans-serif',
-    heading2:   '700 42px/110% "Roboto", sans-serif',
   },
   color: {
     primary90:   '#001D6C',

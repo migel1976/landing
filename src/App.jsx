@@ -7,6 +7,9 @@ import About from "./components/aboutProject/About";
 function App() {
   return (
     <>
+        <TopHeader />
+        <SearchBar />
+        <NavMenu />
         <About/>
     </>
   );

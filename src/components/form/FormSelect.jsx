@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import menuArrow from "../../assets/menu-arrow.svg";
+import { useState } from "react";
 
 const OuterContainer = styled.div`
   // display: flex;
@@ -15,7 +16,8 @@ const OuterContainer = styled.div`
 `;
 
 const Dropdown = styled.div`
-  display: none;
+  // display: none;
+  // display: block;
   position: absolute;
   z-index: 1;
   left: 0;
@@ -30,17 +32,20 @@ const DropdownItem = styled.li`
     background-color: ${({ theme }) => theme.color.coolGray10};
   }
 
-  a {
-    display: block;
-    padding: 12px 8px;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
-  }
+  // a {
+  //   display: block;
+  //   padding: 12px 8px;
+  //   width: 100%;
+  //   height: 100%;
+  //   text-decoration: none;
+  //   color: inherit;
+  // }
 `;
 
 const ItemContainer = styled.div`
+  ${Dropdown} {
+    display: ${({ click }) => (click ? "none" : "block")};
+  }
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,37 +60,75 @@ const ItemContainer = styled.div`
     transition: transform 300ms ease-out;
   }
 
-  &:hover .menu-arrow {
-    transform: rotate(180deg);
-  }
+  // &:hover .menu-arrow {
+  //   transform: rotate(180deg);
+  // }
 
-  &:hover ${Dropdown} {
-    display: block;
-  }
+  // &:hover ${Dropdown} {
+  //   display: block;
+  // }
 `;
 
 const listGroups = [
-  { name: "Все категории", value: "all" },
-  { name: "Группа 1", value: "group_1", status: true },
-  { name: "Группа 1.1", value: "group_1", status: true },
+  // { name: "Все категории", value: "all" },
+  // { name: "Группа 1", value: "group_1", status: true },
+  // { name: "Группа 1.1", value: "group_1", status: true },
+  { name: "Group 1" },
+  { name: "Group 1.2" },
+  {
+    name: "Group 1.3",
+    subgroup: [
+      { name: "Group 1.3.1" },
+      { name: "Group 1.3.2" },
+      { name: "Group 1.3.3" },
+    ],
+  },
 ];
 
 function TopHeader() {
+  const [click, setClick] = useState(true);
+  const onClickItem = () => {
+    setClick((prev) => !prev);
+  };
+
+  // function createTree(obj) {
+  //   return (
+  //     // {obj.map((item) => (
+  //     // for (let item of obj){
+  //     <>
+  //       {obj.map((item) => (
+  //         <DropdownContent key={item.name}>
+  //           <DropdownItem key={item.name}>
+  //             <input type="checkbox" id={item.name} />
+  //             <label htmlFor={item.name}>{item.name}</label>
+  //           </DropdownItem>
+  //           {createTree(obj)}
+  //         </DropdownContent>
+  //       ))}
+  //     </>
+  //   );
+  // }
+
+  function createTree(obj) {
+    return (
+      <DropdownContent>
+        {obj.map((item) => (
+          <DropdownItem key={item.name}>
+            <input type="checkbox" id={item.name} />
+            <label htmlFor={item.name}>{item.name}</label>
+          </DropdownItem>
+        ))}
+      </DropdownContent>
+    );
+  }
+
   return (
     <OuterContainer>
-      <ItemContainer>
+      <ItemContainer onClick={onClickItem} click={click}>
         <span>Профиль</span>
         <img src={menuArrow} className="menu-arrow" />
-        <Dropdown>
-          <DropdownContent>
-            {listGroups.map((item) => (
-              <DropdownItem key={item.name}>
-                {/* <input type="checkbox" id={item.name} name={item.name} /> */}
-                <input type="checkbox" id={item.name} />
-                <label htmlFor={item.name}>{item.name}</label>
-              </DropdownItem>
-            ))}
-          </DropdownContent>
+        <Dropdown onClick={() => console.log("aloha")}>
+          {createTree(listGroups)}
         </Dropdown>
       </ItemContainer>
     </OuterContainer>

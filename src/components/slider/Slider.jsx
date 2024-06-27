@@ -2,6 +2,8 @@ import styled from "styled-components";
 import zoomerIcon from "../../assets/zoomerr.png";
 import userThumb from "../../assets/user-thumb.png";
 import artVenueIcon from "../../assets/art-venue.png";
+import chevronLeft from "../../assets/chevron-left.png";
+import chevronRight from "../../assets/chevron-right.png";
 
 const Container = styled.div`
   background: linear-gradient(180deg, #67c3f3 0%, #5a98f2 100%);
@@ -11,6 +13,7 @@ const Container = styled.div`
 const ContainerBlock = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-inline: 80px;
   padding-block: 120px;
   gap: 10px;
@@ -67,10 +70,18 @@ const PersonBlock = styled.div`
   }
 `;
 
+const Chevron = styled.div`
+  width: 24px;
+  height: 24px;
+`;
+
 export default function Slider() {
   return (
     <Container>
       <ContainerBlock>
+        <Chevron>
+          <img src={chevronLeft} />
+        </Chevron>
         <Block>
           <ImgBlock>
             <img src={zoomerIcon} />
@@ -106,6 +117,9 @@ export default function Slider() {
             <h4>Пульмонолог</h4>
           </PersonBlock>
         </Block>
+        <Chevron>
+          <img src={chevronRight} />
+        </Chevron>
       </ContainerBlock>
     </Container>
   );

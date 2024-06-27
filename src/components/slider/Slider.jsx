@@ -4,6 +4,16 @@ import userThumb from "../../assets/user-thumb.png";
 import artVenueIcon from "../../assets/art-venue.png";
 import chevronLeft from "../../assets/chevron-left.png";
 import chevronRight from "../../assets/chevron-right.png";
+import { useRef } from "react";
+import { useCallback } from "react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useSwiper } from "swiper/react";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 const Container = styled.div`
   background: linear-gradient(180deg, #67c3f3 0%, #5a98f2 100%);
@@ -75,52 +85,87 @@ const Chevron = styled.div`
   height: 24px;
 `;
 
-export default function Slider() {
+const data = [
+  {
+    id: 1,
+    title: "Zoomerr",
+    img: zoomerIcon,
+    text: " гласит, что наличие хороших навыков чтения в детском возрасте является предиктором высокого уровня интеллекта у молодых взрослых людей.",
+    href: "https://medspecial.ru/wiki/Исследование/",
+    hrefText: "Иследование",
+    name: "Петров Петр",
+    occupation: "Невролог",
+    thumb: userThumb,
+  },
+  {
+    id: 2,
+    title: "ArtVenue",
+    img: artVenueIcon,
+    text: " Астма - это хроническое заболевание легких. Симптомы заболевания включают кашель, свистящее дыхание, одышку и чувство стеснения в груди.",
+    href: "",
+    hrefText: "",
+    name: "Кириллов Кирилл",
+    occupation: "Пульмонолог",
+    thumb: userThumb,
+  },
+];
+
+const SwiperNavigations = () => {
+  const swiper = useSwiper();
+
+  return (
+    <div className="navigation-btns">
+      <button onClick={() => swiper.slidePrev()}>PREV</button>
+      <button onClick={() => swiper.slideNext()}>NEXT</button>
+    </div>
+  );
+};
+
+const Slider = () => {
+  const swiper = useSwiper();
+
   return (
     <Container>
       <ContainerBlock>
-        <Chevron>
-          <img src={chevronLeft} />
-        </Chevron>
-        <Block>
-          <ImgBlock>
-            <img src={zoomerIcon} />
-            <span>Zommerr</span>
-          </ImgBlock>
-          <TextBlock>
-            <a href="https://medspecial.ru/wiki/Исследование/" target="_blank">
-              Исследование
-            </a>{" "}
-            гласит, что наличие хороших навыков чтения в детском возрасте
-            является предиктором высокого уровня интеллекта у молодых взрослых
-            людей.
-          </TextBlock>
-          <PersonBlock>
-            <img src={userThumb} />
-            <h1>Петров Петр</h1>
-            <h4>Невролог</h4>
-          </PersonBlock>
-        </Block>
-        <Block>
-          <ImgBlock>
-            <img src={artVenueIcon} />
-            <span>ArtVenue</span>
-          </ImgBlock>
-          <TextBlock>
-            Астма - это хроническое заболевание легких. Симптомы заболевания
-            включают кашель, свистящее дыхание, одышку и чувство стеснения в
-            груди.
-          </TextBlock>
-          <PersonBlock>
-            <img src={userThumb} />
-            <h1>Кириллов Кирилл</h1>
-            <h4>Пульмонолог</h4>
-          </PersonBlock>
-        </Block>
-        <Chevron>
-          <img src={chevronRight} />
-        </Chevron>
+        <Swiper spaceBetween={20} slidesPerView={2}>
+          <Chevron className="navigation-btns">
+            {/* почему то не срабатывает swiper :( */}
+            <img src={chevronLeft} onClick={() => swiper.slidePrev()} />
+          </Chevron>
+          {data.map((item) => (
+            <SwiperSlide key={item.id}>
+              <Block>
+                <ImgBlock>
+                  <img src={item.img} />
+                  <span>{item.title}</span>
+                </ImgBlock>
+                <TextBlock>
+                  <a href={item.href} target="_blank">
+                    {item.hrefText}
+                  </a>
+                  {item.text}
+                </TextBlock>
+                <PersonBlock>
+                  <img src={userThumb} />
+                  <h1>{item.name}</h1>
+                  <h4>{item.occupation}</h4>
+                </PersonBlock>
+              </Block>
+            </SwiperSlide>
+          ))}
+
+          {/* <Chevron> */}
+          <Chevron className="navigation-btns">
+            {/* почему то не срабатывает swiper :( */}
+            <img src={chevronRight} onClick={() => swiper.slideNext()} />
+          </Chevron>
+
+          {/* если подключить отдельно этот компонент то срабатывает swiper */}
+          {/* <SwiperNavigations /> */}
+        </Swiper>
       </ContainerBlock>
     </Container>
   );
-}
+};
+
+export default Slider;

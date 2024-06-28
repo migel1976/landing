@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import zoomerIcon from "../../assets/zoomerr.png";
-import userThumb from "../../assets/user-thumb.png";
-import artVenueIcon from "../../assets/art-venue.png";
-import chevronLeft from "../../assets/chevron-left.png";
-import chevronRight from "../../assets/chevron-right.png";
+
+import zoomerIcon from "@/assets/zoomerr-icon.svg";
+import userThumb from "@/assets/user-thumb.svg";
+import artVenueIcon from "@/assets/art-venue.svg";
+import chevronLeft from "@/assets/chevron-left.svg";
+import chevronRight from "@/assets/chevron-right.svg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useSwiper } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+
+import { useRef } from "react";
+import { useState } from "react";
 
 const data = [
   {
@@ -35,6 +36,28 @@ const data = [
     occupation: "Пульмонолог",
     thumb: userThumb,
   },
+  {
+    id: 3,
+    title: "Probe",
+    img: zoomerIcon,
+    text: " гласит, что наличие хороших навыков чтения в детском возрасте является предиктором высокого уровня интеллекта у молодых взрослых людей.",
+    href: "https://medspecial.ru/wiki/Исследование/",
+    hrefText: "Иследование",
+    name: "Петров Петр",
+    occupation: "Невролог",
+    thumb: userThumb,
+  },
+  {
+    id: 4,
+    title: "Test",
+    img: zoomerIcon,
+    text: " гласит, что наличие хороших навыков чтения в детском возрасте является предиктором высокого уровня интеллекта у молодых взрослых людей.",
+    href: "https://medspecial.ru/wiki/Исследование/",
+    hrefText: "Иследование",
+    name: "Петров Петр",
+    occupation: "Невролог",
+    thumb: userThumb,
+  },
 ];
 
 const Container = styled.div`
@@ -44,27 +67,23 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 80px;
-    padding-block: 80px;
-    // gap: 5px;
+    padding: 80px;
   }
 `;
 
-// const ContainerBlock = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding-inline: 80px;
-//   padding-block: 120px;
-//   gap: 10px;
-// `;
+const ContainerBlock = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+  gap: 10px;
+`;
 
 const Block = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-inline: 40px;
-  padding-block: 20px;
+  padding: 40px;
 
   gap: 20px;
   width: 608px;
@@ -75,7 +94,9 @@ const Block = styled.section`
 const ImgBlock = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 5px;
+  height: 24px;
   span {
     font-size: 24px;
     font-weight: 700;
@@ -86,7 +107,6 @@ const TextBlock = styled.div`
   text-align: center;
   font: ${({ theme }) => theme.typography.bodyL};
   color: ${({ theme }) => theme.color.coolGray90};
-
   a {
     text-decoration: underline;
   }
@@ -110,66 +130,57 @@ const PersonBlock = styled.div`
   }
 `;
 
-const NavLeft = styled.div`
-  position: absolute;
-  top: 220px;
-  left: 40px;
-
-  width: 24px;
-  height: 24px;
+const SlideButton = styled.button`
+  background: transparent;
+  border: 0;
 `;
-
-const NavRight = styled.div`
-  position: absolute;
-  top: 220px;
-  left: 1350px;
-
-  width: 24px;
-  height: 24px;
-`;
-
-const SwiperNavigations = () => {
-  const swiper = useSwiper();
-
-  return (
-    <>
-      <NavLeft>
-        <img src={chevronLeft} onClick={() => swiper.slidePrev()} />
-      </NavLeft>
-      <NavRight>
-        <img src={chevronRight} onClick={() => swiper.slidePrev()} />
-      </NavRight>
-    </>
-  );
-};
 
 const Slider = () => {
+  const [init, setInit] = useState();
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
   return (
     <Container>
-      <Swiper spaceBetween={20} slidesPerView={2} className="container">
-        {data.map((item) => (
-          <SwiperSlide key={item.id}>
-            <Block>
-              <ImgBlock>
-                <img src={item.img} />
-                <span>{item.title}</span>
-              </ImgBlock>
-              <TextBlock>
-                <a href={item.href} target="_blank">
-                  {item.hrefText}
-                </a>
-                {item.text}
-              </TextBlock>
-              <PersonBlock>
-                <img src={userThumb} />
-                <h1>{item.name}</h1>
-                <h4>{item.occupation}</h4>
-              </PersonBlock>
-            </Block>
-          </SwiperSlide>
-        ))}
-        <SwiperNavigations />
-      </Swiper>
+      <ContainerBlock>
+        <SlideButton ref={prevRef}>
+          <img src={chevronLeft} />
+        </SlideButton>
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={2}
+          modules={[Navigation]}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          onInit={() => setInit(true)}
+        >
+          {data.map((item) => (
+            <SwiperSlide key={item.id}>
+              <Block>
+                <ImgBlock>
+                  <img src={item.img} />
+                  <span>{item.title}</span>
+                </ImgBlock>
+                <TextBlock>
+                  <a href={item.href} target="_blank">
+                    {item.hrefText}
+                  </a>
+                  {item.text}
+                </TextBlock>
+                <PersonBlock>
+                  <img src={userThumb} />
+                  <h1>{item.name}</h1>
+                  <h4>{item.occupation}</h4>
+                </PersonBlock>
+              </Block>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <SlideButton ref={nextRef}>
+          <img src={chevronRight} />
+        </SlideButton>
+      </ContainerBlock>
     </Container>
   );
 };

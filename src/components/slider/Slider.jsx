@@ -11,7 +11,6 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 
 import { useRef } from "react";
-import { useState } from "react";
 
 const data = [
   {
@@ -136,7 +135,6 @@ const SlideButton = styled.button`
 `;
 
 const Slider = () => {
-  const [init, setInit] = useState();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   return (
@@ -149,11 +147,12 @@ const Slider = () => {
           spaceBetween={20}
           slidesPerView={2}
           modules={[Navigation]}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
+          onInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
           }}
-          onInit={() => setInit(true)}
         >
           {data.map((item) => (
             <SwiperSlide key={item.id}>

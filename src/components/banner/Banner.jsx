@@ -2,17 +2,29 @@ import styled from "styled-components";
 import rightBanner from "../../assets/right-banner.webp";
 import { useState } from "react";
 
+const OuterContainer=styled.div`
+  background-color: ${({ theme }) => theme.color.coolGray10};
+`
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.color.coolGray10};
   display: flex;
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.x10};
+  @media (max-width:393px) {
+          flex-direction: column;
+          padding-top:48px;
+          padding-inline:16px;
+          row-gap: ${({ theme }) => theme.spacing.x4};
+      }
 `;
 
+
 const TextSection = styled.section`
-  width: 600px;
+  max-width: 600px;
+  @media (max-width:393px) {
+          max-width: 361px;
+      }
 `;
 
 const HeadArticle = styled.article`
@@ -20,6 +32,10 @@ const HeadArticle = styled.article`
   font-size: 54px;
   font-weight: 700;
   text-transform: uppercase;
+  @media (max-width:393px) {
+      font-size: 24px;
+      font-weight: 700;
+      }
 `;
 
 const Paragraph = styled.p`
@@ -46,13 +62,23 @@ const Button = styled.button`
 
 const ImageSection = styled.section`
   padding-block: ${({ theme }) => theme.spacing.x10};
+  @media (max-width:393px) {
+          padding-block: 16px;;
+      }
 `;
 
 const Image = styled.div`
   background-image: url(${rightBanner});
   width: 600px;
   height: 505px;
+  @media (max-width:393px) {
+          background-size: 100% 100%;
+          background-image: url(${rightBanner});
+          width: 360px;
+          height:310px;
+      }
 `;
+
 
 export default function Banner() {
 const [val, setVal]=useState('active')
@@ -62,6 +88,8 @@ const resetActive=()=>{
 }
 
   return (
+    <OuterContainer>
+
     <Container>
       <TextSection>
         <HeadArticle>доказательная медицина для всех</HeadArticle>
@@ -82,5 +110,6 @@ const resetActive=()=>{
         <Image />
       </ImageSection>
     </Container>
+    </OuterContainer>
   );
 }

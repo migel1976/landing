@@ -59,15 +59,14 @@ const data = [
   },
 ];
 
-const Container = styled.div`
+const OuterContainer = styled.div`
   background: linear-gradient(180deg, #67c3f3 0%, #5a98f2 100%);
-  width: 1440px;
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 80px;
-  }
+  width: 100%;
+`;
+
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 1440px;
 `;
 
 const ContainerBlock = styled.div`
@@ -138,49 +137,51 @@ const Slider = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   return (
-    <Container>
-      <ContainerBlock>
-        <SlideButton ref={prevRef}>
-          <img src={chevronLeft} />
-        </SlideButton>
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={2}
-          modules={[Navigation]}
-          onInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
-        >
-          {data.map((item) => (
-            <SwiperSlide key={item.id}>
-              <Block>
-                <ImgBlock>
-                  <img src={item.img} />
-                  <span>{item.title}</span>
-                </ImgBlock>
-                <TextBlock>
-                  <a href={item.href} target="_blank">
-                    {item.hrefText}
-                  </a>
-                  {item.text}
-                </TextBlock>
-                <PersonBlock>
-                  <img src={userThumb} />
-                  <h1>{item.name}</h1>
-                  <h4>{item.occupation}</h4>
-                </PersonBlock>
-              </Block>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <SlideButton ref={nextRef}>
-          <img src={chevronRight} />
-        </SlideButton>
-      </ContainerBlock>
-    </Container>
+    <OuterContainer>
+      <Container>
+        <ContainerBlock>
+          <SlideButton ref={prevRef}>
+            <img src={chevronLeft} />
+          </SlideButton>
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={2}
+            modules={[Navigation]}
+            onInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+          >
+            {data.map((item) => (
+              <SwiperSlide key={item.id}>
+                <Block>
+                  <ImgBlock>
+                    <img src={item.img} />
+                    <span>{item.title}</span>
+                  </ImgBlock>
+                  <TextBlock>
+                    <a href={item.href} target="_blank">
+                      {item.hrefText}
+                    </a>
+                    {item.text}
+                  </TextBlock>
+                  <PersonBlock>
+                    <img src={userThumb} />
+                    <h1>{item.name}</h1>
+                    <h4>{item.occupation}</h4>
+                  </PersonBlock>
+                </Block>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <SlideButton ref={nextRef}>
+            <img src={chevronRight} />
+          </SlideButton>
+        </ContainerBlock>
+      </Container>
+    </OuterContainer>
   );
 };
 

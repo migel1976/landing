@@ -22,7 +22,8 @@ const Container = styled.div`
 
 const TextSection = styled.section`
   max-width: 600px;
-  @media (max-width: 393px) {
+  // @media (max-width: 393px) {
+  @media ${({ theme }) => theme.media.phone} {
     max-width: 361px;
   }
 `;
@@ -41,6 +42,9 @@ const HeadArticle = styled.article`
 const Paragraph = styled.p`
   padding-bottom: 64px;
   font: ${({ theme }) => theme.typography.buttonL};
+  @media ${({ theme }) => theme.media.phone} {
+    font: ${({ theme }) => theme.typography.buttonM};
+  }
 `;
 
 const Button = styled.button`
@@ -48,6 +52,9 @@ const Button = styled.button`
   border: 2px solid #458ff6;
   margin-right: 16px;
   font: ${({ theme }) => theme.typography.buttonL};
+  @media ${({ theme }) => theme.media.phone} {
+    font: ${({ theme }) => theme.typography.buttonS};
+  }
   cursor: pointer;
   background: ${({ variant }) => variant === "active" && "#458ff6"};
   color: ${({ variant, theme }) =>

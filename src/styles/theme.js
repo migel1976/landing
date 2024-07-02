@@ -49,8 +49,9 @@ export const theme = {
     x12: "96px",
   },
   media: {
-    phone: "(max-width:393px)",
-    tablet: "(max-width:679px)",
-    desktop: "(max-width: 1024px)",
+    phone: "(max-width:360px)",
+    tablet: "(max-width:768px)",
+    ipad: "(max-width:1024px)",
+    desktop: "(max-width: 1440px)",
   },
 };

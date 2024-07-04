@@ -3,17 +3,23 @@ import cartIcon from "../../assets/cart-icon.svg";
 import locationIcon from "../../assets/location-icon.svg";
 import menuArrow from "../../assets/menu-arrow.svg";
 import userProfileIcon from "../../assets/user-profile-icon.svg";
+import logoIcon from "/src/assets/logo.svg";
 
 const OuterContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-
-  padding-block: ${({ theme }) => theme.spacing.x1};
-  padding-inline: ${({ theme }) => theme.spacing.x10};
-
-  max-width: 1440px;
+  justify-content: center;
 
   border-bottom: 1px solid #c1c7cd;
+`;
+
+const TopHeaderWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  padding: 8px 80px;
+
+  width: 100%;
+  max-width: 1440px;
 `;
 
 const Dropdown = styled.div`
@@ -74,35 +80,53 @@ const RightContainer = styled.div`
   gap: 24px;
 `;
 
+const LeftContainer = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+const ResponsiveLogo = styled.img`
+  display: none;
+
+  @media (max-width: 980px) {
+    display: block;
+  }
+`;
+
 function TopHeader() {
   return (
     <OuterContainer>
-      <ItemContainer>
-        <img src={locationIcon} />
-        <span>Москва</span>
-      </ItemContainer>
-      <RightContainer>
-        <ItemContainer>
-          <img src={userProfileIcon} />
-          <span>Профиль</span>
-          <img src={menuArrow} className="menu-arrow" />
-          <Dropdown>
-            <DropdownContent>
-              <DropdownItem>
-                <a href="./login/">Вход</a>
-              </DropdownItem>
-              <DropdownItem>
-                <a href="./signup/">Регистрация</a>
-              </DropdownItem>
-            </DropdownContent>
-          </Dropdown>
-        </ItemContainer>
-        <ItemContainer>
-          <img src={cartIcon} />
-          <span>Корзина</span>
-          <img src={menuArrow} className="menu-arrow" />
-        </ItemContainer>
-      </RightContainer>
+      <TopHeaderWrap>
+        <LeftContainer>
+          <ResponsiveLogo src={logoIcon} />
+          <ItemContainer>
+            <img src={locationIcon} />
+            <span>Москва</span>
+          </ItemContainer>
+        </LeftContainer>
+        <RightContainer>
+          <ItemContainer>
+            <img src={userProfileIcon} />
+            <span>Профиль</span>
+            <img src={menuArrow} className="menu-arrow" />
+            <Dropdown>
+              <DropdownContent>
+                <DropdownItem>
+                  <a href="./login/">Вход</a>
+                </DropdownItem>
+                <DropdownItem>
+                  <a href="./signup/">Регистрация</a>
+                </DropdownItem>
+              </DropdownContent>
+            </Dropdown>
+          </ItemContainer>
+          <ItemContainer>
+            <img src={cartIcon} />
+            <span>Корзина</span>
+            <img src={menuArrow} className="menu-arrow" />
+          </ItemContainer>
+        </RightContainer>
+      </TopHeaderWrap>
     </OuterContainer>
   );
 }

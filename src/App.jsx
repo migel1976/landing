@@ -1,18 +1,15 @@
 import "./App.css";
-import NavMenu from "./components/header/NavMenu";
-import SearchBar from "./components/header/SearchBar";
-import TopHeader from "./components/header/TopHeader";
 import Main from "./components/main/Main";
 import Footer from "./components/footer/Footer"
+import About from "./components/aboutProject/About";
+import PageHeader from "./components/header/PageHeader";
 
 function App() {
   return (
     <>
-        <TopHeader />
-        <SearchBar />
-        <NavMenu />
-        <Main/>
-        <Footer/>
+      <PageHeader />
+        <About/>
+       <Footer/>
     </>
   );
 }

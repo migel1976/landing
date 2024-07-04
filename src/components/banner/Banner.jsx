@@ -56,15 +56,23 @@ const Button = styled.button`
     font: ${({ theme }) => theme.typography.buttonS};
   }
   cursor: pointer;
-  background: ${({ variant }) => variant === "active" && "#458ff6"};
+  background: ${({ variant }) => variant === "primary" && "#458ff6"};
   color: ${({ variant, theme }) =>
-    variant === "active" ? theme.color.white : "#458ff6"};
-
+  variant === "primary" ? theme.color.white : "#458ff6"};
+  ${({variant})=>variant==="primary"? 
+`
+  &:hover {
+    background-color: #fff;
+    color:#458ff6;
+  }
+`:
+`
   &:hover {
     background-color: #458ff6;
-    color: ${({ theme }) => theme.color.white};
+    color: #fff;
   }
-`;
+`}
+`
 
 const ImageSection = styled.section`
   padding-block: ${({ theme }) => theme.spacing.x10};
@@ -86,11 +94,6 @@ const Image = styled.div`
 `;
 
 export default function Banner() {
-  const [val, setVal] = useState("active");
-
-  const resetActive = () => {
-    setVal(null);
-  };
 
   return (
     <OuterContainer>
@@ -102,10 +105,10 @@ export default function Banner() {
             случайного гостя нашего сайта превратить в его постоянного
             пользователя.
           </Paragraph>
-          <Button variant={val} onMouseEnter={resetActive}>
+          <Button variant='primary' >
             Войти как врач
           </Button>
-          <Button onMouseEnter={resetActive}>Подробнее</Button>
+          <Button variant='secondary'>Подробнее</Button>
         </TextSection>
         <ImageSection>
           <Image />

@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import logo from "../../assets/logo.svg"
 
 const FooterLogo = () => {
     return ( 
         <a href="">
-            <img src="src/assets/logo.svg" alt="Logo" />
+            <img src={logo} alt="Logo" />
         </a>
      );
 }

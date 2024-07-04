@@ -53,5 +53,6 @@ export const theme = {
     tablet: "(max-width:679px)",
     desktop: "(max-width: 1024px)",
     wide: "(max-width: 1440px)",
+
     }
 }

@@ -22,16 +22,13 @@ const Container = styled.div`
 
 const TextSection = styled.section`
   max-width: 600px;
-  // @media (max-width: 393px) {
   @media ${({ theme }) => theme.media.phone} {
     max-width: 361px;
   }
 `;
 
-const HeadArticle = styled.article`
+const HeadArticle = styled.h1`
   padding-bottom: 48px;
-  font-size: 54px;
-  font-weight: 700;
   text-transform: uppercase;
   @media ${({ theme }) => theme.media.phone} {
     font-size: 24px;

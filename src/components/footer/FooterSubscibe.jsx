@@ -21,7 +21,7 @@ const Form = styled.form`
     &:before {
         content:'';
         position:absolute;
-        background-image: url("src/assets/mail_icon.svg");
+        background-image: url("../../assets/mail_icon.svg");
         background-repeat:no-repeat;
         top:13px;
         left:16px;

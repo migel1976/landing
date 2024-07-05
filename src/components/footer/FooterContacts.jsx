@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import { ListTitle, SocialTitle } from "./FooterMenu";
+import appStore from "../../assets/app-store.svg";
+import googleStore from "../../assets/google-play.svg";
+import youtubeIcon from "../../assets/youtube.svg";
+import facebookIcon from "../../assets/facebook.svg";
+import twitterIcon from "../../assets/twitter.svg";
+import instagramIcon from "../../assets/instagram.svg";
+import linkedinIcon from "../../assets/linkedin.svg";
 
 
 const ShopWrapper = styled.div`
@@ -51,28 +58,28 @@ const FooterContacts = () => {
             <ListTitle>Контакты</ListTitle>
             <ShopWrapper>
                 <ShopLink>
-                <img src="src\assets\app-store.svg" alt="App Store" />
+                <img src={appStore} alt="App Store" />
                 </ShopLink>
                 <ShopLink>
-                    <img src="src\assets\google-play.svg" alt="Google Play" />
+                    <img src={googleStore} alt="Google Play" />
                 </ShopLink>
             </ShopWrapper>
             <SocialTitle>Присоединиться к нам</SocialTitle>
             <SocialWrapper>
                 <SocialLink href="#">
-                    <img src="src\assets\youtube.svg" alt="Youtube" />
+                    <img src={youtubeIcon} alt="Youtube" />
                 </SocialLink>
                 <SocialLink href="#">
-                    <img src="src\assets\facebook.svg" alt="Facebook" />
+                    <img src={facebookIcon} alt="Facebook" />
                 </SocialLink>
                 <SocialLink href="#">
-                    <img src="src\assets\twitter.svg" alt="Twitter" />
+                    <img src={twitterIcon} alt="Twitter" />
                 </SocialLink>
                 <SocialLink href="#">
-                    <img src="src\assets\instagram.svg" alt="Instagram" />
+                    <img src={instagramIcon} alt="Instagram" />
                 </SocialLink>
                 <SocialLink href="#">
-                    <img src="src\assets\linkedin.svg" alt="Linkedin" />
+                    <img src={linkedinIcon} alt="Linkedin" />
                 </SocialLink>            
             </SocialWrapper>
         </BlockContact>

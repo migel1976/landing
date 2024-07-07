@@ -11,7 +11,8 @@ const OuterContainer = styled.div`
   padding-block: ${({ theme }) => theme.spacing.x3};
   padding-inline: ${({ theme }) => theme.spacing.x10};
 
-  max-width: 1440px;
+  width: 1440px;
+  // max-width: 1440px;
 `;
 
 const Logo = styled.img`

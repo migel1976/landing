@@ -50,8 +50,9 @@ export const theme = {
   },
   media: {
     phone: "(max-width:360px)",
-    tablet: "(max-width:768px)",
-    ipad: "(max-width:1024px)",
-    desktop: "(max-width: 1440px)",
-  },
-};
+    tablet: "(max-width:679px)",
+    desktop: "(max-width: 1024px)",
+    wide: "(max-width: 1440px)",
+
+    }
+}
